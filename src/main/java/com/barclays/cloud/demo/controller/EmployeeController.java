@@ -19,7 +19,6 @@ public class EmployeeController {
 	EmployeeService empService;
 
 	// http://localhost:9999/get-emp-by-id/{eid}
-	// http://localhost:9999/get-emp-by-id/101
 
 	@GetMapping("/get-emp-by-id/{eid}")
 	public Employee getEmpById(@PathVariable(name = "eid") int employeeId) {
