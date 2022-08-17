@@ -1,10 +1,12 @@
 package com.barclays.cloud.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.barclays.cloud.demo.exception.EmployeeNotFoundException;
 import com.barclays.cloud.demo.model.Employee;
 import com.barclays.cloud.demo.repository.EmployeeRepository;
 
@@ -17,7 +19,11 @@ public class EmployeeService {
 	EmployeeRepository empRepository;
 
 	public Employee getEmployeeById(int employeeId) {
-		return empRepository.findById(employeeId).get();
+		Optional<Employee> empOptional = empRepository.findById(employeeId);
+		if (empOptional.isPresent())
+			return empOptional.get();
+		String errorMessage = "Employee with eid" + employeeId + " not found.";
+		throw new EmployeeNotFoundException(errorMessage);
 	}
 
 	public List<Employee> getEmployeeByFirstName(String firstName) {
