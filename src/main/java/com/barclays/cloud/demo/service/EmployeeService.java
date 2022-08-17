@@ -15,7 +15,6 @@ public class EmployeeService {
 	EmployeeRepository empRepository;
 
 	public Employee getEmployeeById(int employeeId) {
-
 		return empRepository.findById(employeeId).get();
 	}
 
