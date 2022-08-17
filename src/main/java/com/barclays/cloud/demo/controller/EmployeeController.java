@@ -26,7 +26,7 @@ public class EmployeeController {
 
 //	@GetMapping("/get-emp-by-id/{eid}")
 //	@RequestMapping(name = "/get-emp-by-id/{eid}", method = RequestMethod.GET)
-	@RequestMapping(name = "/get-emp-by-id/{eid}", method = RequestMethod.GET)
+	@RequestMapping(name = "/get-emp-by-id/{eid}", method = RequestMethod.GET, produces = { "application/json" })
 
 	public Employee getEmpById(@PathVariable(name = "eid") int employeeId) {
 		System.out.println(employeeId);
@@ -42,7 +42,9 @@ public class EmployeeController {
 
 //	http://localhost:9999/add-emp 
 
-	@PostMapping("/add-emp")
+//	@PostMapping("/add-emp")
+	@RequestMapping(name = "/get-emp-by-id/{eid}", method = RequestMethod.POST, produces = {
+			"application/json" }, consumes = { "application/json" })
 	public Employee addEmp(@RequestBody Employee employee) {
 		System.out.println(employee.toString());
 		return employee;
