@@ -36,18 +36,28 @@ public class EmployeeController {
 		return response;
 	}
 
+	// http://localhost:9999/emp/get-all-emps
+
 	@RequestMapping(value = "/get-all-emps", method = RequestMethod.GET, produces = { "application/json" })
 	@GetMapping("/get-all-emps")
-	public List<Employee> getAllEmps() {
-		return empService.getAllEmployees();
+	public ResponseEntity<List<Employee>> getAllEmps() {
+		List<Employee> empList = empService.getAllEmployees();
+		HttpStatus status = HttpStatus.OK;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("message", "All employees returned successfully.");
+		ResponseEntity<List<Employee>> response = new ResponseEntity<>(empList, headers, status);
+		return response;
 	}
 
 //	http://localhost:9999/emp/add-emp 
 
 	@RequestMapping(value = "/add-emp", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Employee addEmp(@RequestBody Employee employee) {
-		System.out.println(employee.toString());
-		return employee;
+	public ResponseEntity<Employee> addEmp(@RequestBody Employee employee) {
+		HttpStatus status = HttpStatus.CREATED;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("message", "employee added successfully.");
+		ResponseEntity<Employee> response = new ResponseEntity<>(employee, headers, status);
+		return response;
 	}
 
 }
