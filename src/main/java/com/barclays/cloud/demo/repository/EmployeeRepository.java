@@ -1,5 +1,7 @@
 package com.barclays.cloud.demo.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.stereotype.Repository;
@@ -14,5 +16,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 //	insert 
 //	update 
 //	delete
+
+	public abstract List<Employee> findByFirstName(String firstName);
 
 }

@@ -18,9 +18,8 @@ public class EmployeeService {
 		return empRepository.findById(employeeId).get();
 	}
 
-	public Employee getEmployeeByFirstName(String firstName) {
-
-		return null;
+	public List<Employee> getEmployeeByFirstName(String firstName) {
+		return empRepository.findByFirstName(firstName);
 	}
 
 	public List<Employee> getAllEmployees() {
