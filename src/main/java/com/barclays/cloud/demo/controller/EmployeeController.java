@@ -28,7 +28,7 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/get-emp-by-id/{eid}", method = RequestMethod.GET, produces = { "application/json" })
 	public ResponseEntity<Employee> getEmpById(@PathVariable(name = "eid") int employeeId) {
-		Employee emp = empService.getEmployeeById();
+		Employee emp = empService.getEmployeeById(employeeId);
 		HttpStatus status = HttpStatus.OK;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("message", "employee with eid " + employeeId + " returned successfully.");
@@ -56,7 +56,7 @@ public class EmployeeController {
 		HttpStatus status = HttpStatus.CREATED;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("message", "employee added successfully.");
-		ResponseEntity<Employee> response = new ResponseEntity<>(employee, headers, status);
+		ResponseEntity<Employee> response = new ResponseEntity<>(empService.addEmployee(employee), headers, status);
 		return response;
 	}
 

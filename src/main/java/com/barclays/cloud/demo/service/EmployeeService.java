@@ -10,7 +10,7 @@ import com.barclays.cloud.demo.model.Employee;
 @Service
 public class EmployeeService {
 
-	public Employee getEmployeeById() {
+	public Employee getEmployeeById(int employeeId) {
 		Employee emp = new Employee(101, "Sonu", 90000);
 		System.out.println(emp.toString());
 		return emp;
@@ -25,4 +25,8 @@ public class EmployeeService {
 		return empList;
 	}
 
+	public Employee addEmployee(Employee employee) {
+		System.out.println(employee.toString());
+		return employee;
+	}
 }
