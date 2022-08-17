@@ -17,8 +17,7 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService empService;
 
-
-	//	http://localhost:9999/get-emp-by-id
+	// http://localhost:9999/get-emp-by-id
 
 	@GetMapping("/get-emp-by-id")
 	public Employee getEmpById() {
