@@ -73,6 +73,28 @@ public class EmployeeController {
 		return response;
 	}
 
+//	http://localhost:9999/emp/update-emp 
+
+	@RequestMapping(value = "/update-emp", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Employee> updateEmp(@RequestBody Employee employee) {
+		HttpStatus status = HttpStatus.CREATED;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("message", "employee updated successfully.");
+		ResponseEntity<Employee> response = new ResponseEntity<>(empService.updateEmployee(employee), headers, status);
+		return response;
+	}
+
+	// http://localhost:9999/emp/delete-emp/{eid}
+
+	@RequestMapping(value = "/delete-emp/{eid}", method = RequestMethod.DELETE, produces = { "application/json" })
+	public ResponseEntity<Employee> deleteEmp(@PathVariable(name = "eid") int employeeId) {
+		Employee emp = empService.deleteEmployee(employeeId);
+		HttpStatus status = HttpStatus.OK;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("message", "employee with eid " + employeeId + " deleted successfully.");
+		ResponseEntity<Employee> response = new ResponseEntity<>(emp, headers, status);
+		return response;
+	}
 }
 
 //package com.barclays.cloud.demo.controller;

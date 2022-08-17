@@ -32,7 +32,6 @@ public class EmployeeService {
 			return empList;
 		String errorMessage = "Employee with name" + firstName + " not found.";
 		throw new EmployeeNotFoundException(errorMessage);
-
 	}
 
 	public List<Employee> getAllEmployees() {
@@ -43,4 +42,14 @@ public class EmployeeService {
 		return empRepository.save(employee);
 	}
 
+	public Employee updateEmployee(Employee employee) {
+		this.getEmployeeById(employee.getEmployeeId());
+		return empRepository.save(employee);
+	}
+
+	public Employee deleteEmployee(int employeeId) {
+		Employee emp = this.getEmployeeById(employeeId);
+		empRepository.deleteById(employeeId);
+		return emp;
+	}
 }
