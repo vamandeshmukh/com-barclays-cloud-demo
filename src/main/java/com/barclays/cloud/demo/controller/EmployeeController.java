@@ -36,6 +36,19 @@ public class EmployeeController {
 		return response;
 	}
 
+	// http://localhost:9999/emp/get-emp-by-firstname/{firstname}
+
+	@RequestMapping(value = "/get-emp-by-firstname/{firstname}", method = RequestMethod.GET, produces = {
+			"application/json" })
+	public ResponseEntity<Employee> getEmpByName(@PathVariable(name = "firstname") String firstName) {
+		Employee emp = empService.getEmployeeByFirstName(firstName);
+		HttpStatus status = HttpStatus.OK;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("message", "employee with name " + firstName + " returned successfully.");
+		ResponseEntity<Employee> response = new ResponseEntity<>(emp, headers, status);
+		return response;
+	}
+
 	// http://localhost:9999/emp/get-all-emps
 
 	@RequestMapping(value = "/get-all-emps", method = RequestMethod.GET, produces = { "application/json" })

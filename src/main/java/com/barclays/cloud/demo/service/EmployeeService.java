@@ -18,6 +18,11 @@ public class EmployeeService {
 		return empRepository.findById(employeeId).get();
 	}
 
+	public Employee getEmployeeByFirstName(String firstName) {
+
+		return null;
+	}
+
 	public List<Employee> getAllEmployees() {
 		return empRepository.findAll();
 	}
@@ -25,4 +30,5 @@ public class EmployeeService {
 	public Employee addEmployee(Employee employee) {
 		return empRepository.save(employee);
 	}
+
 }
