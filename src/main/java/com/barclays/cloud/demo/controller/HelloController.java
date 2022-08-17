@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
 //	http://localhost:9999/hello
-	
+
 	@GetMapping("/hello")
 	public String hello() {
 		System.out.println("hello");
@@ -15,7 +15,7 @@ public class HelloController {
 	}
 
 //	http://localhost:9999/hi
-	
+
 	@GetMapping("/hi")
 	public String hi() {
 		System.out.println("hi");
