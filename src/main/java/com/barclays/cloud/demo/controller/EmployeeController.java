@@ -1,6 +1,5 @@
 package com.barclays.cloud.demo.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
