@@ -1,7 +1,14 @@
 package com.barclays.cloud.demo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "emp_table")
 public class Employee {
 
+	@Id
 	private int employeeId;
 	private String firstName;
 	private double salary;

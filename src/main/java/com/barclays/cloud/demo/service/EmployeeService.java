@@ -1,32 +1,29 @@
 package com.barclays.cloud.demo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.barclays.cloud.demo.model.Employee;
+import com.barclays.cloud.demo.repository.EmployeeRepository;
 
 @Service
 public class EmployeeService {
 
+	@Autowired
+	EmployeeRepository empRepository;
+
 	public Employee getEmployeeById(int employeeId) {
-		Employee emp = new Employee(101, "Sonu", 90000);
-		System.out.println(emp.toString());
-		return emp;
+
+		return empRepository.findById(employeeId).get();
 	}
 
 	public List<Employee> getAllEmployees() {
-		List<Employee> empList = new ArrayList<>();
-		empList.add(new Employee(101, "Sonu", 90000));
-		empList.add(new Employee(102, "Monu", 95000));
-		empList.add(new Employee(103, "Tonu", 85000));
-		empList.forEach(e -> System.out.println(e.toString()));
-		return empList;
+		return empRepository.findAll();
 	}
 
 	public Employee addEmployee(Employee employee) {
-		System.out.println(employee.toString());
-		return employee;
+		return empRepository.save(employee);
 	}
 }
