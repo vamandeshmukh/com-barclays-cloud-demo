@@ -27,7 +27,12 @@ public class EmployeeService {
 	}
 
 	public List<Employee> getEmployeeByFirstName(String firstName) {
-		return empRepository.findByFirstName(firstName);
+		List<Employee> empList = empRepository.findByFirstName(firstName);
+		if (!empList.isEmpty())
+			return empList;
+		String errorMessage = "Employee with name" + firstName + " not found.";
+		throw new EmployeeNotFoundException(errorMessage);
+
 	}
 
 	public List<Employee> getAllEmployees() {
